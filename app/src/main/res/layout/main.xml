@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/studyplus_logo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:background="#FFFFFFFF"
+        android:scaleType="fitStart"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="#33ff614f"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="5.0">
+
+        <ImageButton
+            android:id="@+id/talk_search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#33ff614f"
+            android:baselineAlignBottom="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search_white" />
+
+        <ImageButton
+            android:id="@+id/talk_talk_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#ffef2c9f"
+            android:baselineAlignBottom="false"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/talk_white" />
+
+        <ImageButton
+            android:id="@+id/talk_alarm_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#33ff614f"
+            android:scaleType="fitCenter"
+            android:src="@drawable/alarm_white" />
+
+        <ImageButton
+            android:id="@+id/talk_study_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#33ff614f"
+            android:scaleType="fitCenter"
+            android:src="@drawable/study_white" />
+
+        <ImageButton
+            android:id="@+id/talk_pay_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:adjustViewBounds="false"
+            android:background="#33ff614f"
+            android:focusableInTouchMode="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pay_white" />
+
+    </LinearLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/listViewBg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/bottom_write_bar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/message_bar">
+
+            <EditText
+                android:id="@+id/text"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/message_field"
+                android:padding="5sp"
+                android:textColor="@color/textFieldColor" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_margin="5sp"
+                android:background="@drawable/roundedbutton_othercolor_orange_lessradius"
+                android:onClick="sendMessage"
+                android:paddingBottom="5sp"
+                android:paddingLeft="15sp"
+                android:paddingRight="15sp"
+                android:paddingTop="5sp"
+                android:text="전송"
+                android:textColor="#FF555555"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/android:list"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_above="@id/bottom_write_bar"
+            android:layout_below="@+id/linearLayout"
+            android:cacheColorHint="#00000000"
+            android:divider="#00000000"
+            android:background="#ffffffff"
+            android:listSelector="#00000000"></ListView>
+
+        <TextView
+            android:id="@+id/empty"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/bottom_write_bar"
+            android:layout_below="@+id/linearLayout"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/main_empty_list" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffec068d"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

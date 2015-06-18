@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/studyplus_logo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="5dp"
+        android:background="#FFFFFFFF"
+        android:scaleType="fitStart"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="#33ff614f"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="5.0">
+
+        <ImageButton
+            android:id="@+id/search_search_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#ffef259b"
+            android:baselineAlignBottom="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/search_white" />
+
+        <ImageButton
+            android:id="@+id/search_talk_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#33ff614f"
+            android:baselineAlignBottom="false"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/talk_white" />
+
+        <ImageButton
+            android:id="@+id/search_alarm_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#33ff614f"
+            android:scaleType="fitCenter"
+            android:src="@drawable/alarm_white" />
+
+        <ImageButton
+            android:id="@+id/search_study_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:background="#ffffc8c3"
+            android:scaleType="fitCenter"
+            android:src="@drawable/study_white" />
+
+        <ImageButton
+            android:id="@+id/search_pay_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:adjustViewBounds="false"
+            android:background="#33ff614f"
+            android:focusableInTouchMode="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pay_white" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextQuery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:text="독서실 검색">
+
+                <requestFocus />
+            </EditText>
+
+            <Button
+                android:id="@+id/buttonSearch"
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundedbutton"
+                android:text="검색"
+                android:textColor="#ffffffff" />
+
+            <Button
+                android:id="@+id/search_gps"
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundedbutton"
+                android:text="GPS"
+                android:textColor="#ffffffff" />
+
+        </LinearLayout>
+
+        <net.daum.mf.map.api.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</LinearLayout>
