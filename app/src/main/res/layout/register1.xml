@@ -141,7 +141,7 @@
                     android:layout_gravity="center|left"
                     android:id="@+id/register_edit_id"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="20dp" />
 
                 <EditText
                     android:id="@+id/register_edit_pw"
@@ -151,21 +151,21 @@
                     android:hint="******"
                     android:layout_gravity="center|left"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="20dp" />
 
                 <EditText
                     android:id="@+id/register_edit_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="20dp" />
 
                 <EditText
                     android:id="@+id/register_edit_birthday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="20dp" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -174,7 +174,7 @@
                     android:orientation="horizontal"
                     android:weightSum="1"
                     android:id="@+id/gender"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="25dp"
                     android:layout_marginRight="5dp">
 
                     <RadioButton
@@ -201,7 +201,7 @@
                     android:ems="10"
                     android:id="@+id/register_edit_parents_phone"
                     android:layout_marginRight="5dp"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="20dp" />
 
 
             </LinearLayout>

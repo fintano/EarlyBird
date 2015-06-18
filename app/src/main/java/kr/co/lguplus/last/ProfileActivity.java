@@ -258,7 +258,7 @@ public class ProfileActivity extends Activity {
 
         float dpInPx;
 
-        String str = "      " + currentUser.RRname + "\n" + currentUser.fromDate + " ~ " + currentUser.toDate + "\n      Seat.No " + currentUser.seatNo;
+        String str = "           " + currentUser.RRname + "\n    " + currentUser.fromDate + " ~ " + currentUser.toDate + "\n            Seat.No " + currentUser.seatNo;
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER_HORIZONTAL;
         params.topMargin = 20;

@@ -63,14 +63,14 @@ public class DreamActivity extends Activity {
 
                 final AnimationSet rollingIn = new AnimationSet(true);
                 Animation moving = new TranslateAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 6, Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, 0);
-                moving.setDuration(5000);
+                moving.setDuration(3000);
                 final Animation rotating = new RotateAnimation(0, 720, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-                rotating.setDuration(5000);
+                rotating.setDuration(3000);
                 rollingIn.addAnimation(FadeInShort);
                 rollingIn.addAnimation(rotating);
                 rollingIn.addAnimation(moving);
                 rollingIn.setFillAfter(true);
-                rollingIn.setDuration(4000);
+                rollingIn.setDuration(2000);
 
                 /*Fade in 'study'*/
 
@@ -129,7 +129,7 @@ public class DreamActivity extends Activity {
             }
         };
         //3�� �ε� ���� ����
-        handler.sendEmptyMessageDelayed(0, 9000);
+        handler.sendEmptyMessageDelayed(0, 6500);
     }
 
     @Override
