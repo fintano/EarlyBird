@@ -4,10 +4,10 @@
     android:background="#ffffffff"
     android:orientation="vertical"
     android:id="@+id/afterlogin_layout">
-    <ImageView
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/studyplus_logo"
+        android:id="@+id/profile_studyplus_logo"
         android:scaleType="fitStart"
         android:src="@drawable/logo"
         android:background="#FFFFFFFF"

@@ -1,6 +1,5 @@
 package kr.co.lguplus.last;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -17,14 +15,11 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Gallery;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -35,6 +30,9 @@ import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+
+import kr.co.lguplus.last.search.SearchDemoActivity;
+import kr.co.lguplus.last.talk.MessageActivity;
 
 public class ProfileActivity extends Activity {
 
@@ -61,7 +59,16 @@ public class ProfileActivity extends Activity {
         ImageButton alarmbtn = (ImageButton) findViewById(R.id.profile_alarm_btn);
         ImageButton studybtn = (ImageButton) findViewById(R.id.profile_study_btn);
         ImageButton billbtn = (ImageButton) findViewById(R.id.profile_pay_btn);
+        ImageButton logobtn = (ImageButton) findViewById(R.id.profile_studyplus_logo);
 
+        logobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+                startActivity(intent);
+
+            }
+        });
         talkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +133,7 @@ public class ProfileActivity extends Activity {
         nameView.setText(currentUser.name + " 학생");
 
         //if it is went through PayActivity
-        if(whichAct == UserInfo.FROM_PAY) {
+        if(UserInfo.BARCODE_SET) {
             // barcode creation
             try {
                 bitmap = encodeAsBitmap(Integer.toString(barcodeNum), BarcodeFormat.CODE_128, 600, 300);
@@ -141,7 +148,7 @@ public class ProfileActivity extends Activity {
         }
 
         //if it is went through LoginActivity
-        else if(whichAct == UserInfo.FROM_LOGIN) {
+        else{
             fromLoginEvent();
         }
     }

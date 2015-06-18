@@ -6,10 +6,10 @@
     android:background="#ffffffff"
     android:weightSum="1">
 
-    <ImageView
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/studyplus_logo"
+        android:id="@+id/study_studyplus_logo"
         android:scaleType="fitStart"
         android:src="@drawable/logo"
         android:background="#FFFFFFFF"
@@ -100,7 +100,7 @@
         android:textSize="28sp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="260dp"
         android:text="2015.05.13 오전 10시 28분 입실\n2015.05.13 오후 12시 03분 퇴실\n2015.05.13 오후 1시 22분 입실\n2015.05.13 오후 4시 34분 퇴실"
         android:id="@+id/studylist_info"

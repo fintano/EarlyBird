@@ -81,7 +81,6 @@ public class LoginActivity extends Activity {
                         Intent profactivity = new Intent(LoginActivity.this, ProfileActivity.class);
                         //Bundle bundle = new Bundle();
                         //bundle.putInt("EXTRA_INT",UserInfo.FROM_LOGIN);
-                        profactivity.putExtra("EXTRA_INT", UserInfo.FROM_LOGIN);
                         startActivity(profactivity);
 
                     }

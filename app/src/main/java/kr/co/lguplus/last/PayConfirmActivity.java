@@ -76,7 +76,7 @@ public class PayConfirmActivity extends Activity {
                                             // 확인 버튼 클릭시 설정
                                             public void onClick(DialogInterface dialog, int whichButton) {
                                                 Intent intent = new Intent(PayConfirmActivity.this, ProfileActivity.class);
-                                                intent.putExtra("EXTRA_INT", UserInfo.FROM_PAY);
+                                                UserInfo.BARCODE_SET=true;
                                                 startActivity(intent);
 
                                             }

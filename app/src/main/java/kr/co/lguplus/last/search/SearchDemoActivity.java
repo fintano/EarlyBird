@@ -1,4 +1,4 @@
-package kr.co.lguplus.last;
+package kr.co.lguplus.last.search;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapPoint.GeoCoordinate;
 import net.daum.mf.map.api.MapPointBounds;
+import net.daum.mf.map.api.MapReverseGeoCoder;
 import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
@@ -31,14 +32,26 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
-public class SearchDemoActivity extends FragmentActivity implements MapView.MapViewEventListener, MapView.POIItemEventListener {
+import kr.co.lguplus.last.AlarmActivity;
+import kr.co.lguplus.last.MapApiConst;
+import kr.co.lguplus.last.PayActivity;
+import kr.co.lguplus.last.ProfileActivity;
+import kr.co.lguplus.last.R;
+import kr.co.lguplus.last.SearchDetailActivity;
+import kr.co.lguplus.last.StudyListActivity;
+import kr.co.lguplus.last.talk.MessageActivity;
+
+public class SearchDemoActivity extends FragmentActivity implements  MapView.MapViewEventListener, MapView.POIItemEventListener,MapReverseGeoCoder.ReverseGeoCodingResultListener {
 
     private static final String LOG_TAG = "SearchDemoActivity";
 
     private MapView mMapView;
     private EditText mEditTextQuery;
     private Button mButtonSearch;
+    private Button gpsButtonSearch;
     private HashMap<Integer, Item> mTagItemMap = new HashMap<Integer, Item>();
+    private MapReverseGeoCoder mReverseGeoCoder = null;
+    private String currentPosition = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +65,16 @@ public class SearchDemoActivity extends FragmentActivity implements MapView.MapV
         ImageButton studybtn = (ImageButton) findViewById(R.id.search_study_btn);
         ImageButton billbtn = (ImageButton) findViewById(R.id.search_pay_btn);
         ImageButton talkbtn = (ImageButton) findViewById(R.id.search_talk_btn);
+        ImageButton logobtn = (ImageButton) findViewById(R.id.search_studyplus_logo);
 
+        logobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SearchDemoActivity.this, ProfileActivity.class);
+                startActivity(intent);
+
+            }
+        });
         talkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +126,50 @@ public class SearchDemoActivity extends FragmentActivity implements MapView.MapV
 
         mEditTextQuery = (EditText) findViewById(R.id.editTextQuery); // 검색창
 
+
+        gpsButtonSearch = (Button) findViewById(R.id.search_gps);
+        gpsButtonSearch.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                GPSInfo gps = new GPSInfo(SearchDemoActivity.this);
+                /* Get currentPosition and set this to 'currentPosition' */
+
+                if(gps.isGetLocation()) {
+
+                    mReverseGeoCoder = new MapReverseGeoCoder(MapApiConst.DAUM_MAPS_ANDROID_APP_API_KEY, MapPoint.mapPointWithGeoCoord(gps.getLatitude(), gps.getLongitude()), SearchDemoActivity.this, SearchDemoActivity.this);
+                    mReverseGeoCoder.startFindingAddress();
+                }
+                else {
+                    // GPS 를 사용할수 없으므로
+                    gps.showSettingsAlert();
+                }
+                GeoCoordinate geoCoordinate = mMapView.getMapCenterPoint().getMapPointGeoCoord();
+                double latitude = geoCoordinate.latitude; // 위도
+                double longitude = geoCoordinate.longitude; // 경도
+
+                int radius = 10000; // 중심 좌표부터의 반경거리. 특정 지역을 중심으로 검색하려고 할 경우 사용. meter 단위 (0 ~ 10000)
+                int page = 1; // 페이지 번호 (1 ~ 3). 한페이지에 15개
+                String apikey = MapApiConst.DAUM_MAPS_ANDROID_APP_API_KEY;
+                String query = currentPosition + " 독서실";
+
+                Searcher searcher = new Searcher(); // net.daum.android.map.openapi.search.Searcher
+                searcher.searchKeyword(getApplicationContext(), query, latitude, longitude, radius, page, apikey, new OnFinishSearchListener() {
+                    @Override
+                    public void onSuccess(List<Item> itemList) {
+                        mMapView.removeAllPOIItems(); // 기존 검색 결과 삭제
+                        showResult(itemList); // 검색 결과 보여줌
+                    }
+
+                    @Override
+                    public void onFail() {
+                        showToast("API_KEY의 제한 트래픽이 초과되었습니다.");
+                    }
+                });
+            }
+        });
+
+
         mButtonSearch = (Button) findViewById(R.id.buttonSearch); // 검색버튼
         mButtonSearch.setOnClickListener(new OnClickListener() { // 검색버튼 클릭 이벤트 리스너
             @Override
@@ -113,10 +179,12 @@ public class SearchDemoActivity extends FragmentActivity implements MapView.MapV
                     showToast("찾고자 하는 독서실의 위치를 입력하세요.");
                     return;
                 }
+
                 hideSoftKeyboard(); // 키보드 숨김
                 GeoCoordinate geoCoordinate = mMapView.getMapCenterPoint().getMapPointGeoCoord();
                 double latitude = geoCoordinate.latitude; // 위도
                 double longitude = geoCoordinate.longitude; // 경도
+
                 int radius = 10000; // 중심 좌표부터의 반경거리. 특정 지역을 중심으로 검색하려고 할 경우 사용. meter 단위 (0 ~ 10000)
                 int page = 1; // 페이지 번호 (1 ~ 3). 한페이지에 15개
                 String apikey = MapApiConst.DAUM_MAPS_ANDROID_APP_API_KEY;
@@ -332,4 +400,19 @@ public class SearchDemoActivity extends FragmentActivity implements MapView.MapV
     public void onMapViewZoomLevelChanged(MapView mapView, int zoomLevel) {
     }
 
+    @Override
+    public void onReverseGeoCoderFoundAddress(MapReverseGeoCoder mapReverseGeoCoder, String s) {
+        mapReverseGeoCoder.toString();
+        currentPosition = s;
+    }
+
+    @Override
+    public void onReverseGeoCoderFailedToFindAddress(MapReverseGeoCoder mapReverseGeoCoder) {
+        onFinishReverseGeoCoding("Fail");
+
+    }
+
+    private void onFinishReverseGeoCoding(String result) {
+        Toast.makeText(SearchDemoActivity.this, "Reverse Geo-coding : " + result, Toast.LENGTH_SHORT).show();
+    }
 }

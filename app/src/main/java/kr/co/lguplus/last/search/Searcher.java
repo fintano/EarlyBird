@@ -1,4 +1,4 @@
-package kr.co.lguplus.last;
+package kr.co.lguplus.last.search;
 
 import android.content.Context;
 import android.os.AsyncTask;

@@ -6,8 +6,7 @@ import java.util.LinkedList;
  * Created by we on 2015-06-01.
  */
 class UserInfo {
-    public static final int FROM_PAY = 1;
-    public static final int FROM_LOGIN = 0;
+    public static boolean BARCODE_SET = false;
     public static LinkedList<loginStruct> user= new LinkedList();
     private static ReadingRoomStruct currentUser; // null�ϰ��?
     public static void setUserInfo(loginStruct ls) {

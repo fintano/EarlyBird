@@ -1,4 +1,4 @@
-package kr.co.lguplus.last;
+package kr.co.lguplus.last.talk;
 
 /**
  * Utility is a just an ordinary class to have some Utility methods

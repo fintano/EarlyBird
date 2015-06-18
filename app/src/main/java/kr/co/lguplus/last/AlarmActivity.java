@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import kr.co.lguplus.last.search.SearchDemoActivity;
+import kr.co.lguplus.last.talk.MessageActivity;
+
 
 public class AlarmActivity extends Activity {
 
@@ -31,6 +34,16 @@ public class AlarmActivity extends Activity {
         ImageButton studybtn = (ImageButton) findViewById(R.id.alarm_study_btn);
         ImageButton billbtn = (ImageButton) findViewById(R.id.alarm_bill_btn);
         ImageButton talkbtn = (ImageButton) findViewById(R.id.alarm_talk_btn);
+        ImageButton logobtn = (ImageButton) findViewById(R.id.alarm_studyplus_logo);
+
+        logobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AlarmActivity.this, ProfileActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         talkbtn.setOnClickListener(new View.OnClickListener() {
             @Override

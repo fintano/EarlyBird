@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".SearchDemoActivity" />
+        <activity android:name=".search.SearchDemoActivity" />
         <activity android:name=".SearchDetailActivity" />
         <activity android:name=".SeatActivity"/>
         <activity android:name=".LoginActivity" />
@@ -47,7 +47,7 @@
             android:label="@string/title_activity_pay_confirm" >
         </activity>
         <activity
-            android:name=".MessageActivity">
+            android:name=".talk.MessageActivity">
         </activity>
     </application>
 

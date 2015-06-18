@@ -1,4 +1,4 @@
-package kr.co.lguplus.last;
+package kr.co.lguplus.last.talk;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,6 +11,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import kr.co.lguplus.last.AlarmActivity;
+import kr.co.lguplus.last.Application;
+import kr.co.lguplus.last.PayActivity;
+import kr.co.lguplus.last.ProfileActivity;
+import kr.co.lguplus.last.R;
+import kr.co.lguplus.last.search.SearchDemoActivity;
+import kr.co.lguplus.last.StudyListActivity;
+
 /**
  * MessageActivity is a main Activity to show a ListView containing Message items
  * 
@@ -21,7 +29,7 @@ public class MessageActivity extends ListActivity {
 	/** Called when the activity is first created. */
 
 	ArrayList<Message> messages;
-	AwesomeAdapter adapter;
+	Application.AwesomeAdapter adapter;
 	EditText text;
 	static Random rand = new Random();	
 	static String sender;
@@ -42,7 +50,16 @@ public class MessageActivity extends ListActivity {
 		ImageButton studybtn = (ImageButton) findViewById(R.id.talk_study_btn);
 		ImageButton billbtn = (ImageButton) findViewById(R.id.talk_pay_btn);
 		ImageButton talkbtn = (ImageButton) findViewById(R.id.talk_talk_btn);
+		ImageButton logobtn = (ImageButton) findViewById(R.id.talk_studyplus_logo);
 
+		logobtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(MessageActivity.this, ProfileActivity.class);
+				startActivity(intent);
+
+			}
+		});
 		talkbtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -96,7 +113,7 @@ public class MessageActivity extends ListActivity {
 		messages.add(new Message("oh thats great. how are you showing them", false));*/
 		
 
-		adapter = new AwesomeAdapter(this, messages);
+		adapter = new Application.AwesomeAdapter(this, messages);
 		setListAdapter(adapter);/*
 		addNewMessage(new Message("mmm, well, using 9 patches png to show them.", true));*/
 	}

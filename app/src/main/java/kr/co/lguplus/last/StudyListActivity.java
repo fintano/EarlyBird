@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.TextViewCompat;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +12,10 @@ import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
+
+import kr.co.lguplus.last.search.SearchDemoActivity;
+import kr.co.lguplus.last.talk.MessageActivity;
 
 
 public class StudyListActivity extends Activity {
@@ -45,7 +43,16 @@ public class StudyListActivity extends Activity {
         ImageButton studybtn = (ImageButton) findViewById(R.id.study_study_btn);
         ImageButton billbtn = (ImageButton) findViewById(R.id.study_pay_btn);
         ImageButton talkbtn = (ImageButton) findViewById(R.id.study_talk_btn);
+        ImageButton logobtn = (ImageButton) findViewById(R.id.study_studyplus_logo);
 
+        logobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StudyListActivity.this, ProfileActivity.class);
+                startActivity(intent);
+
+            }
+        });
         talkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,6 +130,7 @@ public class StudyListActivity extends Activity {
             dateText.setText(str + " 열공내역");
 
             tv.setText(str + " 오전 10시 28분 입실\n"+str+" 오후 12시 03분 퇴실\n"+str+" 오후 1시 22분 입실\n"+str+" 오후 4시 34분 퇴실");
+            tv.setVisibility(View.VISIBLE);
         }
     };
     @Override

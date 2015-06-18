@@ -17,6 +17,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import kr.co.lguplus.last.search.Item;
+
 
 public class SearchDetailActivity extends Activity {
 

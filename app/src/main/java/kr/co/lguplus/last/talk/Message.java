@@ -1,4 +1,4 @@
-package kr.co.lguplus.last;
+package kr.co.lguplus.last.talk;
 
 /**
  * Message is a Custom Object to encapsulate message information/fields

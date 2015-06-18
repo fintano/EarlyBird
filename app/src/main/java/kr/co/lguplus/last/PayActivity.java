@@ -1,18 +1,17 @@
 package kr.co.lguplus.last;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import kr.co.lguplus.last.search.SearchDemoActivity;
+import kr.co.lguplus.last.talk.MessageActivity;
 
 
 public class PayActivity extends Activity {
@@ -53,7 +52,16 @@ public class PayActivity extends Activity {
         ImageButton studybtn = (ImageButton) findViewById(R.id.bill_study_btn);
         ImageButton billbtn = (ImageButton) findViewById(R.id.bill_pay_btn);
         ImageButton talkbtn = (ImageButton) findViewById(R.id.bill_talk_btn);
+        ImageButton logobtn = (ImageButton) findViewById(R.id.pay_studyplus_logo);
 
+        logobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PayActivity.this, ProfileActivity.class);
+                startActivity(intent);
+
+            }
+        });
         talkbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
