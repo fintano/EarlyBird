@@ -15,5 +15,9 @@ etc
 Until now, in GooglePlayStore there are no app like this.
 so we think this app is competitive
 
+To use it, You need to 
+        AndroidStudio
+If you don't have Android Studio, can find apk file in my project
+
 
 
